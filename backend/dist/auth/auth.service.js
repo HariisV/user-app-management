@@ -125,7 +125,7 @@ let AuthService = class AuthService {
         if (!user) {
             throw new common_1.HttpException(message_const_1.MESSAGE.EMAIL_NOT_FOUND, 400);
         }
-        return await this.PrismaService.user.update({
+        await this.PrismaService.user.update({
             where: {
                 email,
             },
@@ -133,6 +133,7 @@ let AuthService = class AuthService {
                 verifyAt: new Date(),
             },
         });
+        return this.jwtService.sign({ id: user.id });
     }
     async logout(id) {
         return await this.PrismaService.user.update({

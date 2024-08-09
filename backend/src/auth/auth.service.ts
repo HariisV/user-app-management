@@ -148,7 +148,7 @@ export class AuthService {
     };
   }
 
-  async verifyEmail(token: string): Promise<any> {
+  async verifyEmail(token: string): Promise<string> {
     const email = Buffer.from(token, 'base64').toString('ascii');
     const user = await this.PrismaService.user.findUnique({
       where: {
@@ -160,7 +160,7 @@ export class AuthService {
       throw new HttpException(MESSAGE.EMAIL_NOT_FOUND, 400);
     }
 
-    return await this.PrismaService.user.update({
+    await this.PrismaService.user.update({
       where: {
         email,
       },
@@ -168,6 +168,8 @@ export class AuthService {
         verifyAt: new Date(),
       },
     });
+
+    return this.jwtService.sign({ id: user.id });
   }
 
   async logout(id: number): Promise<any> {

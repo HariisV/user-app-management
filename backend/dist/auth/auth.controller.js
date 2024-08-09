@@ -42,8 +42,8 @@ let AuthController = class AuthController {
         };
     }
     async verifyEmail(req, res) {
-        await this.authService.verifyEmail(req.query.token);
-        return res.redirect(`${process.env.FRONTEND_URL}/auth/login`);
+        const result = await this.authService.verifyEmail(req.query.token);
+        return res.redirect(`${process.env.FRONTEND_URL}/auth/redirect/${result}`);
     }
     async resendVerification(request) {
         await this.authService.resendVerification(request.email);

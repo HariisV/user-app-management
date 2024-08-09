@@ -53,9 +53,9 @@ export class AuthController {
   @Get('/verify')
   @HttpCode(200)
   async verifyEmail(@Req() req: any, @Res() res: any): Promise<any> {
-    await this.authService.verifyEmail(req.query.token);
+    const result = await this.authService.verifyEmail(req.query.token);
 
-    return res.redirect(`${process.env.FRONTEND_URL}/auth/login`);
+    return res.redirect(`${process.env.FRONTEND_URL}/auth/redirect/${result}`);
   }
 
   @Post('/resend-verification')

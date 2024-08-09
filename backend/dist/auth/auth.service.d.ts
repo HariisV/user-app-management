@@ -16,6 +16,6 @@ export declare class AuthService {
     login(request: LoginUserRequest): Promise<LoginUserResponse>;
     register(request: RegisterUserRequest): Promise<LoginUserResponse>;
     resendVerification(email: string): Promise<any>;
-    verifyEmail(token: string): Promise<any>;
+    verifyEmail(token: string): Promise<string>;
     logout(id: number): Promise<any>;
 }
