@@ -129,7 +129,7 @@ export default function UserIndex() {
           </div>
           <div className="border border-primary w-80 p-5 rounded-xl flex items-center gap-4">
             <Statistic
-              title="Average Active User"
+              title="Average Active User 7 Days"
               unit="%"
               value={data?.averageActiveUser7Days}
             />
