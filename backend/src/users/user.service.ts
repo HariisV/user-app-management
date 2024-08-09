@@ -112,7 +112,7 @@ export class UserService {
         },
       }),
 
-      averageActiveUser7Days: (active7Days / countAllUser) * 100,
+      averageActiveUser7Days: Math.floor((active7Days / countAllUser) * 100),
     };
   }
 }
