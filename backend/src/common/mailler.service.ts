@@ -25,7 +25,7 @@ export class MailerService {
 
     const templatePath = path.join(
       __dirname,
-      '../../../src/common/mail/template',
+      '../../src/common/mail/template',
       fileName,
     );
     const mailOptions = {

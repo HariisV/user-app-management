@@ -27,7 +27,7 @@ let MailerService = class MailerService {
         });
     }
     async sendMail(to, text, fileName, payload) {
-        const templatePath = path.join(__dirname, '../../../src/common/mail/template', fileName);
+        const templatePath = path.join(__dirname, '../../src/common/mail/template', fileName);
         const mailOptions = {
             from: `"${process.env.MAIL_SENDER}" <${process.env.MAIL_USER}>`,
             to,
