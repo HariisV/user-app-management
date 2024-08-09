@@ -129,7 +129,8 @@ export default function UserIndex() {
           </div>
           <div className="border border-primary w-80 p-5 rounded-xl flex items-center gap-4">
             <Statistic
-              title="Average Active user"
+              title="Average Active User"
+              unit="%"
               value={data?.averageActiveUser7Days}
             />
             <IconChartArrowsVertical className="text-primary" />

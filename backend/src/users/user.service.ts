@@ -87,6 +87,15 @@ export class UserService {
   }
 
   async dashboard(): Promise<any> {
+    const active7Days = await this.PrismaService.user.count({
+      where: {
+        lastActiveAt: {
+          gte: moment().subtract(7, 'days').toDate(),
+        },
+      },
+    });
+
+    const countAllUser = await this.PrismaService.user.count();
     return {
       newUserRegistered: await this.PrismaService.user.count({
         where: {
@@ -103,13 +112,7 @@ export class UserService {
         },
       }),
 
-      averageActiveUser7Days: await this.PrismaService.user.count({
-        where: {
-          lastActiveAt: {
-            gte: moment().subtract(7, 'days').toDate(),
-          },
-        },
-      }),
+      averageActiveUser7Days: active7Days / countAllUser,
     };
   }
 }
