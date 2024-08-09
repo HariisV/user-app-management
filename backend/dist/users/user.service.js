@@ -94,7 +94,7 @@ let UserService = class UserService {
                     },
                 },
             }),
-            averageActiveUser7Days: active7Days / countAllUser,
+            averageActiveUser7Days: (active7Days / countAllUser) * 100,
         };
     }
 };
