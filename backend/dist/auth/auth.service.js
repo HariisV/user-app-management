@@ -131,6 +131,7 @@ let AuthService = class AuthService {
             },
             data: {
                 verifyAt: new Date(),
+                countLogin: user.countLogin + 1,
             },
         });
         return this.jwtService.sign({ id: user.id });

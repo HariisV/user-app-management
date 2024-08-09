@@ -166,6 +166,7 @@ export class AuthService {
       },
       data: {
         verifyAt: new Date(),
+        countLogin: user.countLogin + 1,
       },
     });
 
